@@ -6,6 +6,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="MongoDB.EntityFrameworkCore" Version="8.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\Devon4Net.Application\Devon4Net.Application.csproj" />
       <ProjectReference Include="..\Devon4Net.Domain\Devon4Net.Domain.csproj" />
     </ItemGroup>

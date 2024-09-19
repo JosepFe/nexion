@@ -6,6 +6,7 @@ using System.Reflection;
 using Devon4Net.Infrastructure.Persistence;
 using Devon4Net.Infrastructure.UnitOfWork.Common;
 using Devon4Net.Infrastructure.UnitOfWork.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace Devon4Net.Presentation;
 
@@ -55,5 +56,9 @@ public static class Configuration
     private static void SetupDatabase(IServiceCollection services, IConfiguration configuration)
     {
         services.SetupDatabase<EmployeeContext>(configuration, "Employee", DatabaseType.InMemory).ConfigureAwait(false);
+        services.AddDbContext<NexionContext>(options =>
+        {
+            options.UseMongoDB("mongodb://localhost:27017/", "nexion");
+        });
     }
 }
