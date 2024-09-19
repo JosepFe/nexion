@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Devon4Net.Application\Devon4Net.Application.csproj" />
+    <ProjectReference Include="..\Nexion.Application\Nexion.Application.csproj" />
   </ItemGroup>
 
 </Project>

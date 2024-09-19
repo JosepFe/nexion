@@ -10,8 +10,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Devon4Net.Application\Devon4Net.Application.csproj" />
-      <ProjectReference Include="..\Devon4Net.Domain\Devon4Net.Domain.csproj" />
+      <ProjectReference Include="..\Nexion.Application\Nexion.Application.csproj" />
+      <ProjectReference Include="..\Nexion.Domain\Nexion.Domain.csproj" />
     </ItemGroup>
 
 </Project>

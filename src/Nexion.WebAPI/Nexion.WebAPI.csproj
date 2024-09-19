@@ -18,7 +18,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	<ProjectReference Include="..\Devon4Net.Infrastructure\Devon4Net.Infrastructure.csproj" />
+	<ProjectReference Include="..\Nexion.Infrastructure\Nexion.Infrastructure.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
