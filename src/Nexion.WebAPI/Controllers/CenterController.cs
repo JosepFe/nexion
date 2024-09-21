@@ -1,41 +1,44 @@
 ﻿namespace Devon4Net.WebAPI.Controllers;
 
-using Devon4Net.Application.Ports.Repositories;
-using Devon4Net.Domain.Entities;
-using Devon4Net.Infrastructure.Persistence;
-using LiteDB;
+using Devon4Net.Application.Dtos;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Nexion.Application.Services.Interfaces;
 
-[Route("api/[controller]")]
 [ApiController]
+[Route("/centers")]
 public class CenterController : ControllerBase
 {
-    private readonly NexionContext _context;
-    private readonly ICenterRepository _centerRepository;
-    private readonly ISessionRepository _sessionRepository;
+    private readonly ICenterService _centerService;
 
-    public CenterController(NexionContext context, ICenterRepository centerRepository, ISessionRepository sessionRepository)
+    public CenterController(ICenterService centerService)
     {
-        _context = context;
-        _centerRepository = centerRepository;
-        _sessionRepository = sessionRepository;
+        _centerService = centerService;
     }
 
-    // GET: api/center/{id}
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Center>> GetCenter(string id)
+    [HttpGet]
+    [Consumes("application/json")]
+    [Produces("application/json")]
+    public async Task<IActionResult> GetCenterById([FromQuery] string centerId)
     {
-        var trainer = await _context.Sessions!.FirstOrDefaultAsync(c => c.Id.ToString() == id);
+        var result = await _centerService.GetCenterByIdAsync(centerId);
+        return result.BuildResult();
+    }
 
-        var res = await _centerRepository.Get();
-        var res2 = await _sessionRepository.Get();
+    [HttpPost]
+    [Consumes("application/json")]
+    [Produces("application/json")]
+    public async Task<IActionResult> GetCenterById([FromBody] CenterDto centerDto)
+    {
+        var result = await _centerService.AddCenterAsync(centerDto);
+        return result.BuildResult();
+    }
 
-        if (trainer == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(trainer);
+    [HttpGet("a")]
+    [Consumes("application/json")]
+    [Produces("application/json")]
+    public async Task<IActionResult> GetAllCenters()
+    {
+        var result = await _centerService.GetAllCentersAsync();
+        return result.BuildResult();
     }
 }

@@ -3,21 +3,26 @@
 using Devon4Net.Domain;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using YourNamespace.Models;
+using Nexion.Domain.Entities;
 
 public class Center : BaseEntity<ObjectId>
 {
     public static readonly string CollectionName = "center";
 
+    public Center(string? name)
+    {
+        Name = name;
+    }
+
     [BsonElement("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [BsonElement("location")]
-    public Location Location { get; set; }
+    public Location? Location { get; set; }
 
     [BsonElement("trainers")]
-    public List<string> Trainers { get; set; } // List of trainer IDs
+    public List<ObjectId> Trainers { get; set; } // List of trainer IDs
 
     [BsonElement("athletes")]
-    public List<string> Athletes { get; set; } // List of athlete IDs
+    public List<ObjectId> Athletes { get; set; } // List of athlete IDs
 }

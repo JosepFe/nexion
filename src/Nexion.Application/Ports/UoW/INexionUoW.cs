@@ -1,8 +1,8 @@
 ﻿using Devon4Net.Infrastructure.UnitOfWork.UnitOfWork;
 
-namespace Devon4Net.Application.Ports;
+namespace Nexion.Application.Ports.UoW;
 
 public interface INexionUoW : IUnitOfWork
 {
-    
+
 }
