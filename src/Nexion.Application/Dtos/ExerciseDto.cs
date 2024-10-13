@@ -1,7 +1,14 @@
-﻿namespace Devon4Net.Application.Dtos;
+﻿namespace Nexion.Application.Dtos;
 
-public record ExerciseDto(
-    string Name,
-    string Description,
-    List<string> MuscleGroup,
-    string Difficulty);
+public class ExerciseDto
+{
+    public string ExerciseId { get; set; }
+
+    public string Name { get; set; }
+
+    public string Description { get; set; }
+
+    public List<string> MuscleGroup { get; set; }
+
+    public string Difficulty { get; set; }
+}

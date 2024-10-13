@@ -1,8 +1,15 @@
-﻿namespace Devon4Net.Application.Dtos;
+﻿namespace Devon4Net.Application.Dtos
+{
+    public class CenterDto
+    {
+        public string? CenterId { get; set; }
 
-public record CenterDto(
-    string CenterId,
-    string? Name,
-    LocationDto? Location,
-    List<string> Trainers,
-    List<string> Athletes);
+        public string? Name { get; set; }
+
+        public LocationDto? Location { get; set; }
+
+        public List<string> Trainers { get; set; } = [];
+
+        public List<string> Athletes { get; set; } = [];
+    }
+}

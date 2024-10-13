@@ -5,9 +5,13 @@ namespace Nexion.Application.Services.Interfaces;
 
 public interface ICenterService
 {
-    Task<DevonResult<CenterDto>> GetCenterByIdAsync(string id);
+    Task<DevonResult<CenterDto>> GetCenterByIdAsync(string centerId);
+
     Task<DevonResult<IEnumerable<CenterDto>>> GetAllCentersAsync();
+
     Task<DevonResult<CenterDto>> AddCenterAsync(CenterDto centerDto);
+
     Task UpdateCenterAsync(string id, CenterDto centerDto);
-    Task DeleteCenterAsync(string id);
+
+    Task<DevonResult<bool>> DeleteCenterAsync(string centerId);
 }

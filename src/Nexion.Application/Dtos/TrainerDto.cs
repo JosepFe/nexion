@@ -1,7 +1,14 @@
 ﻿namespace Devon4Net.Application.Dtos;
 
-public record TrainerDto(
-    string Name,
-    string CenterId, // Reference to Center ID
-    List<string> Specialties,
-    int Experience);
+public class TrainerDto
+{
+    public string? TrainerId { get; set; }
+
+    public string? Name { get; set; }
+
+    public string? CenterId { get; set; }
+
+    public List<string> Specialties { get; set; } = [];
+
+    public int? Experience { get; set; }
+}

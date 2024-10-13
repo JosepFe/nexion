@@ -6,5 +6,6 @@ using MongoDB.Bson;
 
 public interface ICenterRepository: IRepository<Center>
 {
-    Task<Center> GetCenterByIdAsync(ObjectId id);
+    Task<Center> GetCenterByIdAsync(ObjectId centerId);
+    Task<bool> DeleteCenterByIdAsync(ObjectId centerId);
 }

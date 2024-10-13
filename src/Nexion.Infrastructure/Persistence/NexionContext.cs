@@ -11,20 +11,29 @@ public class NexionContext : DbContext
     {
     }
 
-    public virtual DbSet<Center>? Centers { get; init; }
-
-    public virtual DbSet<Trainer>? Trainers { get; init; }
-
     public virtual DbSet<Athlete>? Athletes { get; init; }
 
-    public virtual DbSet<PredefinedQuestion>? PredefinedQuestions { get; init; }
+    public virtual DbSet<Center>? Centers { get; init; }
 
     public virtual DbSet<Exercise>? Exercises { get; init; }
 
     public virtual DbSet<Session>? Sessions { get; init; }
 
+    public virtual DbSet<Survey>? Surveys { get; init; }
+
+    public virtual DbSet<SurveyAnswer>? SurveysAnswers { get; init; }
+
+    public virtual DbSet<Trainer>? Trainers { get; init; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // Map Athletes to MongoDB collection
+        modelBuilder.Entity<Athlete>(entity =>
+        {
+            entity.ToCollection(Athlete.CollectionName);
+            entity.HasKey(e => e.Id);
+        });
+
         // Map Centers to MongoDB collection
         modelBuilder.Entity<Center>(entity =>
         {
@@ -32,34 +41,6 @@ public class NexionContext : DbContext
             entity.HasKey(e => e.Id);
         });
 
-        // Map Trainers to MongoDB collection
-        modelBuilder.Entity<Trainer>(entity =>
-        {
-            entity.ToCollection(Trainer.CollectionName);
-            entity.HasKey(e => e.Id);
-            entity.HasOne<Center>()
-                .WithMany()
-                .HasForeignKey(e => e.CenterId);
-        });
-
-        // Map Athletes to MongoDB collection
-        modelBuilder.Entity<Athlete>(entity =>
-        {
-            entity.ToCollection(Athlete.CollectionName);
-            entity.HasKey(e => e.Id);
-            entity.HasOne<Center>()
-                .WithMany()
-                .HasForeignKey(e => e.CenterId);
-        });
-
-        // Map Predefined Questions to MongoDB collection
-        modelBuilder.Entity<PredefinedQuestion>(entity =>
-        {
-            entity.ToCollection("predefinedQuestion");
-            entity.HasKey(e => e.Id);
-        });
-
-        // Map Exercises to MongoDB collection
         modelBuilder.Entity<Exercise>(entity =>
         {
             entity.ToCollection(Exercise.CollectionName);
@@ -76,9 +57,37 @@ public class NexionContext : DbContext
             entity.HasOne<Trainer>()
                 .WithMany()
                 .HasForeignKey(e => e.TrainerId);
+        });
 
-            entity.OwnsMany(e => e.Athletes);
-            entity.OwnsMany(e => e.Exercises);
+        // Map Trainers to MongoDB collection
+        modelBuilder.Entity<Survey>(entity =>
+        {
+            entity.ToCollection(Survey.CollectionName);
+            entity.HasKey(e => e.Id);
+        });
+
+        // Map Trainers to MongoDB collection
+        modelBuilder.Entity<SurveyAnswer>(entity =>
+        {
+            entity.ToCollection(SurveyAnswer.CollectionName);
+            entity.HasKey(e => e.Id);
+
+            // Establish relations inside Survey
+            entity.HasOne<Survey>()
+                .WithMany()
+                .HasForeignKey(e => e.SurveyId);
+
+            // Establish relations inside Survey
+            entity.HasOne<Athlete>()
+                .WithMany()
+                .HasForeignKey(e => e.AthelteId);
+        });
+
+        // Map Trainers to MongoDB collection
+        modelBuilder.Entity<Trainer>(entity =>
+        {
+            entity.ToCollection(Trainer.CollectionName);
+            entity.HasKey(e => e.Id);
         });
     }
 

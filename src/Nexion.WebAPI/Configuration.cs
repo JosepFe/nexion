@@ -1,14 +1,14 @@
-﻿using Devon4Net.Infrastructure.Common.Helpers;
-using Devon4Net.Infrastructure.MediatR.Behaviors;
-using FluentValidation;
-using MediatR;
+﻿namespace Devon4Net.Presentation;
+
 using System.Reflection;
+using Devon4Net.Infrastructure.Common.Helpers;
+using Devon4Net.Infrastructure.MediatR.Behaviors;
 using Devon4Net.Infrastructure.Persistence;
 using Devon4Net.Infrastructure.UnitOfWork.Common;
 using Devon4Net.Infrastructure.UnitOfWork.Enums;
+using FluentValidation;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
-
-namespace Devon4Net.Presentation;
 
 public static class Configuration
 {
@@ -51,14 +51,12 @@ public static class Configuration
     /// <summary>
     /// Setup here your database connections.
     /// </summary>
-    /// <param name="services"></param>
-    /// <param name="configuration"></param>
     private static void SetupDatabase(IServiceCollection services, IConfiguration configuration)
     {
         services.SetupDatabase<EmployeeContext>(configuration, "Employee", DatabaseType.InMemory).ConfigureAwait(false);
         services.AddDbContext<NexionContext>(options =>
         {
-            options.UseMongoDB("mongodb://localhost:27017/", "nexion");
+            options.UseMongoDB("mongodb+srv://nexion:changeme@nexion.s8btf.mongodb.net/", "nexion");
         });
     }
 }

@@ -30,15 +30,39 @@ public class CenterService : ICenterService
         var location = new Location(centerDto.Location.Address, centerDto.Location.City, centerDto.Location.State, centerDto.Location.ZipCode, centerDto.Location.Country);
 
         var center = new Center(centerDto.Name);
+        center.Location = location;
 
         var centerEntity = await _centerRepository.Create(center);
 
         return DevonResult<CenterDto>.Success(centerEntity.ToCenterDto());
     }
 
-    public Task DeleteCenterAsync(string id)
+    public async Task<DevonResult<bool>> DeleteCenterAsync(string centerId)
     {
-        throw new NotImplementedException();
+        var tryParseObjectIdResult = ObjectId.TryParse(centerId, out var centerObjectId);
+
+        if (!tryParseObjectIdResult)
+        {
+            var error = new DevonError("1001", "Invalid Data", System.Net.HttpStatusCode.BadRequest);
+            return DevonResult<bool>.Error(error);
+        }
+
+        var center = await GetCenterByIdAsync(centerId);
+
+        if (center.Errors.Count() > 0)
+        {
+            return DevonResult<bool>.Error(center.Errors);
+        }
+
+        var deletedCenter = await _centerRepository.DeleteCenterByIdAsync(centerObjectId);
+
+        if (!deletedCenter)
+        {
+            var error = new DevonError("1003", "Center not deleted", System.Net.HttpStatusCode.NotFound);
+            return DevonResult<bool>.Error(error);
+        }
+
+        return deletedCenter;
     }
 
     public async Task<DevonResult<IEnumerable<CenterDto>>> GetAllCentersAsync()
@@ -54,9 +78,9 @@ public class CenterService : ICenterService
         return centers.Select(center => center.ToCenterDto()).ToList();
     }
 
-    public async Task<DevonResult<CenterDto>> GetCenterByIdAsync(string id)
+    public async Task<DevonResult<CenterDto>> GetCenterByIdAsync(string centerId)
     {
-        var tryParseObjectIdResult = ObjectId.TryParse(id, out var objectId);
+        var tryParseObjectIdResult = ObjectId.TryParse(centerId, out var centerObjectId);
 
         if (!tryParseObjectIdResult)
         {
@@ -64,7 +88,7 @@ public class CenterService : ICenterService
             return DevonResult<CenterDto>.Error(error);
         }
 
-        var center = await _centerRepository.GetCenterByIdAsync(objectId);
+        var center = await _centerRepository.GetCenterByIdAsync(centerObjectId);
 
         if (center == null) 
         {

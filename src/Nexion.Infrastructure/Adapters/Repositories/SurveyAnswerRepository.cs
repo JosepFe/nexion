@@ -5,9 +5,9 @@ using Devon4Net.Domain.Entities;
 using Devon4Net.Infrastructure.Persistence;
 using Devon4Net.Infrastructure.UnitOfWork.Repository;
 
-public class SurveyQuestionRepository : Repository<SurveyQuestion>, ISurveyQuestionRepository
+public class SurveyAnswerRepository : Repository<SurveyAnswer>, ISurveyAnswerRepository
 {
-    public SurveyQuestionRepository(NexionContext context) : base(context)
+    public SurveyAnswerRepository(NexionContext context) : base(context)
     {
     }
 }

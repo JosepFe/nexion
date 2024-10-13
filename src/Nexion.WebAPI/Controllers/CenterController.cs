@@ -1,8 +1,10 @@
 ﻿namespace Devon4Net.WebAPI.Controllers;
 
-using Devon4Net.Application.Dtos;
 using Microsoft.AspNetCore.Mvc;
+using Nexion.Application.Extensions;
 using Nexion.Application.Services.Interfaces;
+using Nexion.WebAPI.ApiContracts.Center;
+using Nexion.WebAPI.Extensions.Center;
 
 [ApiController]
 [Route("/centers")]
@@ -15,30 +17,39 @@ public class CenterController : ControllerBase
         _centerService = centerService;
     }
 
+    [HttpGet("{centerId}")]
+    [Consumes("application/json")]
+    [Produces("application/json")]
+    public async Task<IActionResult> GetCenterById([FromRoute] string centerId)
+    {
+        var result = await _centerService.GetCenterByIdAsync(centerId);
+        return result.BuildResult();
+    }
+
     [HttpGet]
     [Consumes("application/json")]
     [Produces("application/json")]
-    public async Task<IActionResult> GetCenterById([FromQuery] string centerId)
+    public async Task<IActionResult> GetAllCenters()
     {
-        var result = await _centerService.GetCenterByIdAsync(centerId);
+        var result = await _centerService.GetAllCentersAsync();
         return result.BuildResult();
     }
 
     [HttpPost]
     [Consumes("application/json")]
     [Produces("application/json")]
-    public async Task<IActionResult> GetCenterById([FromBody] CenterDto centerDto)
+    public async Task<IActionResult> CreateCenter([FromBody] CreateCenterRequest createCenterRequest)
     {
-        var result = await _centerService.AddCenterAsync(centerDto);
+        var result = await _centerService.AddCenterAsync(createCenterRequest.ToCenterDto());
         return result.BuildResult();
     }
 
-    [HttpGet("a")]
+    [HttpDelete("{centerId}")]
     [Consumes("application/json")]
     [Produces("application/json")]
-    public async Task<IActionResult> GetAllCenters()
+    public async Task<IActionResult> DeleteCenter([FromRoute] string centerId)
     {
-        var result = await _centerService.GetAllCentersAsync();
+        var result = await _centerService.DeleteCenterAsync(centerId);
         return result.BuildResult();
     }
 }

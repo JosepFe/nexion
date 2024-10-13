@@ -5,6 +5,13 @@ namespace Devon4Net.Domain.Entities;
 
 public class SessionExercise
 {
+    public SessionExercise(ObjectId exerciseId, int repetitions, int sets)
+    {
+        ExerciseId = exerciseId;
+        Repetitions = repetitions;
+        Sets = sets;
+    }
+
     [BsonElement("exerciseId")]
     public ObjectId ExerciseId { get; set; }
 

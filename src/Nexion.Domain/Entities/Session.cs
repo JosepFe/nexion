@@ -10,14 +10,17 @@ public class Session : BaseEntity<ObjectId>
     public static readonly string CollectionName = "session";
 
     [BsonElement("trainerId")]
-    public ObjectId TrainerId { get; set; }
+    public ObjectId? TrainerId { get; set; }
 
     [BsonElement("athletes")]
-    public List<AthleteSession> Athletes { get; set; }
+    public List<ObjectId>? Athletes { get; set; }
 
     [BsonElement("sessionType")]
-    public string SessionType { get; set; }
+    public string? SessionType { get; set; }
 
     [BsonElement("exercises")]
-    public List<SessionExercise> Exercises { get; set; }
+    public List<SessionExercise?> Exercises { get; set; }
+
+    [BsonElement("surveys")]
+    public List<ObjectId>? Surveys { get; set; }
 }

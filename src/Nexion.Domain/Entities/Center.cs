@@ -21,8 +21,8 @@ public class Center : BaseEntity<ObjectId>
     public Location? Location { get; set; }
 
     [BsonElement("trainers")]
-    public List<ObjectId> Trainers { get; set; } // List of trainer IDs
+    public List<ObjectId>? Trainers { get; set; } = [];
 
     [BsonElement("athletes")]
-    public List<ObjectId> Athletes { get; set; } // List of athlete IDs
+    public List<ObjectId>? Athletes { get; set; } = [];
 }
