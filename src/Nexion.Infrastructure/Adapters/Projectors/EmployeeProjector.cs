@@ -4,6 +4,7 @@ using Devon4Net.Application.Ports.Projectors;
 using Devon4Net.Domain.Entities;
 using Devon4Net.Infrastructure.Persistence;
 using Devon4Net.Infrastructure.UnitOfWork.Projector;
+using Nexion.Application.Dtos;
 
 namespace Devon4Net.Infrastructure.Adapters.Projectors;
 

@@ -1,6 +1,6 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿namespace Nexion.Domain;
 
-namespace Devon4Net.Domain;
+using MongoDB.Bson.Serialization.Attributes;
 
 public abstract class BaseEntity<TKey>
 {

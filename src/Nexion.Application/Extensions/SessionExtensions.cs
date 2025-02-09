@@ -1,4 +1,5 @@
 ﻿using Devon4Net.Application.Dtos;
+using Nexion.Domain.Entities;
 
 namespace Nexion.Application.Extensions;
 

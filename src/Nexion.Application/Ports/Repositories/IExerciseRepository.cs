@@ -1,7 +1,7 @@
-﻿namespace Devon4Net.Application.Ports.Repositories;
+﻿namespace Nexion.Application.Ports.Repositories;
 
-using Devon4Net.Domain.Entities;
 using Devon4Net.Infrastructure.UnitOfWork.Repository;
+using Nexion.Domain.Entities;
 
 public interface IExerciseRepository : IRepository<Exercise>
 {

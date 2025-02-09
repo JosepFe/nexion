@@ -6,9 +6,6 @@
     },
     "orderingRules": {
       "blankLinesBetweenUsingGroups": "omit"
-    },
-    "documentationRules": {
-      "documentPublicElements": false
     }
   }
 }

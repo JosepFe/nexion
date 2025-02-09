@@ -1,7 +1,10 @@
-﻿namespace Nexion.Application.Services;
+﻿using Nexion.Application.Dtos;
+using Nexion.Application.Ports.Repositories;
+using Nexion.Domain.Entities;
+
+namespace Nexion.Application.Services;
 
 using Devon4Net.Application.Dtos;
-using Devon4Net.Application.Ports.Repositories;
 using Devon4Net.Domain.Entities;
 using Devon4Net.Infrastructure.Common.Errors;
 using Devon4Net.Infrastructure.Common.Models;
@@ -26,18 +29,9 @@ public class TrainerService : ITrainerService
             return DevonResult<TrainerDto>.Error(error);
         }
 
-        var tryParseObjectIdResult = ObjectId.TryParse(trainerDto.CenterId, out var centerObjectId);
-
-        if (!tryParseObjectIdResult)
-        {
-            var error = new DevonError("1001", "Invalid Data", System.Net.HttpStatusCode.BadRequest);
-            return DevonResult<TrainerDto>.Error(error);
-        }
-
         var trainer = new Trainer
         {
             Name = trainerDto.Name,
-            CenterId = centerObjectId,
             Specialties = trainerDto.Specialties,
             Experience = trainerDto.Experience,
         };

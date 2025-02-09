@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿namespace Nexion.Application.Dtos;
 
-namespace Devon4Net.Application.Dtos;
+using System.ComponentModel.DataAnnotations;
 
 /// <summary>
 /// Employee definition

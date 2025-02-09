@@ -1,4 +1,6 @@
-﻿namespace Devon4Net.Presentation;
+﻿using Nexion.Infrastructure.Persistence;
+
+namespace Devon4Net.Presentation;
 
 using System.Reflection;
 using Devon4Net.Infrastructure.Common.Helpers;

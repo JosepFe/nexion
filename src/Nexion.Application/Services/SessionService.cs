@@ -1,8 +1,9 @@
-﻿namespace Nexion.Application.Services;
+﻿using Nexion.Application.Ports.Repositories;
+
+namespace Nexion.Application.Services;
 
 using System.Net;
 using Devon4Net.Application.Dtos;
-using Devon4Net.Application.Ports.Repositories;
 using Devon4Net.Domain.Entities;
 using Devon4Net.Infrastructure.Common.Errors;
 using Devon4Net.Infrastructure.Common.Models;

@@ -1,6 +1,6 @@
 ﻿namespace Nexion.WebAPI.Extensions.Trainer;
 
-using Devon4Net.Application.Dtos;
+using Nexion.Application.Dtos;
 using Nexion.WebAPI.ApiContracts.Trainer;
 
 public static class TrainerExtensions
@@ -12,7 +12,6 @@ public static class TrainerExtensions
             Name = request.Name,
             Experience = request.Experience,
             Specialties = request.Specialties,
-            CenterId = request.CenterId,
         };
     }
 
@@ -23,7 +22,6 @@ public static class TrainerExtensions
             Name = request.Name,
             Experience = request.Experience,
             Specialties = request.Specialties,
-            CenterId = request.CenterId,
         };
     }
 }

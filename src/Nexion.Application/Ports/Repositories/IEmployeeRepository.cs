@@ -1,8 +1,8 @@
-﻿using System.Linq.Expressions;
+﻿namespace Nexion.Application.Ports.Repositories;
+
+using System.Linq.Expressions;
 using Devon4Net.Domain.Entities;
 using Devon4Net.Infrastructure.UnitOfWork.Repository;
-
-namespace Devon4Net.Application.Ports.Repositories;
 
 /// <summary>
 /// EmployeeRepository interface

@@ -1,4 +1,6 @@
-﻿namespace Nexion.Application.Extensions;
+﻿using Nexion.Domain.Entities;
+
+namespace Nexion.Application.Extensions;
 
 using Devon4Net.Application.Dtos;
 using Devon4Net.Domain.Entities;

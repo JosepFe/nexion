@@ -1,4 +1,4 @@
-﻿namespace Devon4Net.Application.Dtos;
+﻿namespace Nexion.Application.Dtos;
 
 public record PredefinedQuestionDto(
     string Text,

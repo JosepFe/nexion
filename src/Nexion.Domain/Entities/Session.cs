@@ -1,7 +1,6 @@
-﻿namespace Devon4Net.Domain.Entities;
+﻿namespace Nexion.Domain.Entities;
 
-using System.Collections.Generic;
-using Devon4Net.Domain;
+using Devon4Net.Domain.Entities;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -19,7 +18,7 @@ public class Session : BaseEntity<ObjectId>
     public string? SessionType { get; set; }
 
     [BsonElement("exercises")]
-    public List<SessionExercise?> Exercises { get; set; }
+    public List<SessionExercise>? Exercises { get; set; }
 
     [BsonElement("surveys")]
     public List<ObjectId>? Surveys { get; set; }

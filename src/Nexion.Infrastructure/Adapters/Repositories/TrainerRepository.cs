@@ -1,7 +1,10 @@
-﻿namespace Devon4Net.Infrastructure.Adapters.Repositories;
+﻿using Nexion.Application.Ports.Repositories;
+using Nexion.Domain.Entities;
+using Nexion.Infrastructure.Persistence;
+
+namespace Devon4Net.Infrastructure.Adapters.Repositories;
 
 using System.Threading.Tasks;
-using Devon4Net.Application.Ports.Repositories;
 using Devon4Net.Domain.Entities;
 using Devon4Net.Infrastructure.Persistence;
 using Devon4Net.Infrastructure.UnitOfWork.Repository;

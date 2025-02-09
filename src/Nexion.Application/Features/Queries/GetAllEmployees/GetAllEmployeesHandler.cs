@@ -2,6 +2,7 @@
 using Devon4Net.Application.Ports.Projectors;
 using Devon4Net.Infrastructure.Common;
 using MediatR;
+using Nexion.Application.Dtos;
 
 namespace Devon4Net.Application.Features.Queries.GetAllEmployees;
 
