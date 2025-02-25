@@ -407,3 +407,6 @@ liquibase.properties
 
 # Enviroment Files
 .env
+
+# vs code Files
+.vscode/*
