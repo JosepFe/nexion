@@ -1,8 +1,8 @@
-﻿namespace Devon4Net.Infrastructure.Persistence;
+﻿namespace Nexion.Infrastructure.Persistence;
 
-using Devon4Net.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.EntityFrameworkCore.Extensions;
+using Nexion.Domain.Entities;
 
 public class NexionContext : DbContext
 {
@@ -12,8 +12,6 @@ public class NexionContext : DbContext
     }
 
     public virtual DbSet<Athlete>? Athletes { get; init; }
-
-    public virtual DbSet<Center>? Centers { get; init; }
 
     public virtual DbSet<Exercise>? Exercises { get; init; }
 
@@ -31,13 +29,6 @@ public class NexionContext : DbContext
         modelBuilder.Entity<Athlete>(entity =>
         {
             entity.ToCollection(Athlete.CollectionName);
-            entity.HasKey(e => e.Id);
-        });
-
-        // Map Centers to MongoDB collection
-        modelBuilder.Entity<Center>(entity =>
-        {
-            entity.ToCollection(Center.CollectionName);
             entity.HasKey(e => e.Id);
         });
 

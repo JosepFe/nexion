@@ -1,4 +1,6 @@
-﻿namespace Devon4Net.Infrastructure.Adapters;
+﻿using Nexion.Infrastructure.Persistence;
+
+namespace Devon4Net.Infrastructure.Adapters;
 
 using Devon4Net.Infrastructure.Persistence;
 using Devon4Net.Infrastructure.UnitOfWork.UnitOfWork;

@@ -1,7 +1,7 @@
 ﻿namespace Nexion.Application.Extensions;
 
-using Devon4Net.Application.Dtos;
-using Devon4Net.Domain.Entities;
+using Nexion.Application.Dtos;
+using Nexion.Domain.Entities;
 
 public static class TrainerExtensions
 {
@@ -11,7 +11,6 @@ public static class TrainerExtensions
         {
             TrainerId = trainer.Id.ToString(),
             Name = trainer.Name,
-            CenterId = trainer.CenterId.ToString(),
             Specialties = trainer.Specialties,
             Experience = trainer.Experience,
         };

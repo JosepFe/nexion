@@ -1,9 +1,7 @@
-﻿namespace Devon4Net.Domain.Entities;
+﻿namespace Nexion.Domain.Entities;
 
-using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using Nexion.Domain.Entities;
 
 public class Survey : BaseEntity<ObjectId>
 {

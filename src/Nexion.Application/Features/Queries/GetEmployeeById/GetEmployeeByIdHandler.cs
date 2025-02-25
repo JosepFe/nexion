@@ -4,6 +4,7 @@ using Devon4Net.Infrastructure.Common;
 using Devon4Net.Infrastructure.Common.Errors;
 using Devon4Net.Infrastructure.Common.Models;
 using MediatR;
+using Nexion.Application.Dtos;
 
 namespace Devon4Net.Application.Features.Queries.GetEmployeeById;
 

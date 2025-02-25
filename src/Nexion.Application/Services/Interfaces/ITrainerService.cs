@@ -2,6 +2,7 @@
 
 using Devon4Net.Application.Dtos;
 using Devon4Net.Infrastructure.Common.Models;
+using Nexion.Application.Dtos;
 
 public interface ITrainerService
 {
